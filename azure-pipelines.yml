@@ -9,12 +9,15 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- bash: echo "our first pipeline"
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+jobs:
+  - job: Firstjob
+    timeoutInMinutes: 10
+    steps:
+    - bash: echo "The First Job"
+    
+  - job: Secondjob
+    steps:
+    - bash: echo "The Second Job"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    - bash: echo "Our Second Pipeline"
+
